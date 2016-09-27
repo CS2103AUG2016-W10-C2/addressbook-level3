@@ -1,17 +1,16 @@
-
-
 .text-field {
-    -fx-font-size: 12pt;
-    -fx-font-family: "Consolas";
-    -fx-font-weight: bold;
-    -fx-text-fill: yellow;
-    -fx-control-inner-background: derive(#1d1d1d,20%);
+	-fx-font-size: 8pt;
+	-fx-font-family: "Monaco";
+	-fx-font-weight: bold;
+	-fx-text-fill: #c09035;
+	-fx-control-inner-background: derive(#12363a, 20%);
 }
 
 .text-area {
-    -fx-background-color: black;
-    -fx-control-inner-background: black;
-    -fx-font-family: "Segoe UI Semibold";
-    -fx-font-size: 10pt;
-    -fx-padding: 5 5 5 5;
+	-fx-background-color: #12363a;
+	-fx-control-inner-background: #12363a;
+	-fx-font-family: "Monaco";
+	-fx-font-size: 8pt;
+	-fx-padding: 5 5 5 5;
+	-fx-text-fill: #78c7cf;
 }

@@ -26,6 +26,7 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
+    public static final Pattern LIST_ARGS_FORMAT = Pattern.compile("(?<leftBound>\\w)\\s(?<rightBound>\\w)");
 
     /**
      * Signals that the user input could not be parsed.
@@ -72,7 +73,7 @@ public class Parser {
                 return prepareFind(arguments);
 
             case ListCommand.COMMAND_WORD:
-                return new ListCommand();
+            return prepareList(arguments);
 
             case ViewCommand.COMMAND_WORD:
                 return prepareView(arguments);
@@ -226,6 +227,21 @@ public class Parser {
         final String[] keywords = matcher.group("keywords").split("\\s+");
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         return new FindCommand(keywordSet);
+    }
+
+    /**
+     * Parses arguments in the context of the list person command.
+     * 
+     * @param args
+     *            full command args string
+     * @return the prepared command
+     */
+    private Command prepareList(String args) {
+        final Matcher matcher = LIST_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new ListCommand();
+        }
+        return new ListCommand(matcher.group("leftBound"), matcher.group("rightBound"));
     }
 
 

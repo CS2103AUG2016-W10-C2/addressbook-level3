@@ -83,6 +83,18 @@ public class UniqueTagList implements Iterable<Tag> {
     public boolean contains(Tag toCheck) {
         return internalList.contains(toCheck);
     }
+    
+    /**
+     * Returns true if the lists have any Tags in common.
+     */
+    public boolean containsAny(UniqueTagList uniqueTagList) {
+        for(Tag tag : uniqueTagList) {
+            if (internalList.contains(tag)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * Adds a Tag to the list.
